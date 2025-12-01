@@ -1,0 +1,37 @@
+{
+  "name": "Advent of Code 2025 - .NET 9 Aspire",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-azuretools.vscode-docker",
+        "humao.rest-client"
+      ],
+      "settings": {
+        "dotnet.defaultSolution": "AdventOfCode.sln"
+      }
+    }
+  },
+  "forwardPorts": [1100, 18888],
+  "portsAttributes": {
+    "1100": {
+      "label": "API Service",
+      "onAutoForward": "notify"
+    },
+    "18888": {
+      "label": "Aspire Dashboard",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "dotnet restore",
+  "remoteUser": "vscode"
+}
