@@ -7,6 +7,10 @@ namespace AdventOfCode.Solutions.Days;
 /// </summary>
 public partial class Day01 : ISolution
 {
+
+    [GeneratedRegex(@"([L|R])(\d+)")]
+    private static partial Regex RotationsRegex();
+
     public string SolveLevel1(string input)
     {
         // Parse input
@@ -29,7 +33,7 @@ public partial class Day01 : ISolution
         return answer.ToString();
     }
 
-    private int ComputeLevel1(string[] lines)
+    private static int ComputeLevel1(string[] lines)
     {
         var count = 0;
         var curpos = 50;
@@ -46,7 +50,7 @@ public partial class Day01 : ISolution
         return count;
     }
 
-    private int ComputeLevel2(string[] lines)
+    private static int ComputeLevel2(string[] lines)
     {
         // Your Level 2 logic here
         var count = 0;
@@ -73,11 +77,15 @@ public partial class Day01 : ISolution
         return count;
     }
 
-    private int AmountToTurn(string line)
+    private static int AmountToTurn(string line)
     {
-        var direction = line[0] == 'L'? -1 : 1;
-        var amount = int.Parse(line[1..]);
+        var match = RotationsRegex().Match(line);
+        if (match.Success)
+        {
+            var direction = match.Groups[1].Value == "L"? -1 : 1;
+            return direction * int.Parse(match.Groups[2].Value);
+        }
 
-        return direction * amount;
+        throw new InvalidOperationException($"Line parsing failed for line: {line}");
     }
 }

@@ -3,22 +3,13 @@ using Xunit;
 
 namespace AdventOfCode.Tests.SolutionTests;
 
-public class Day01Tests
+public class Day03Tests
 {
-    private readonly Day01 _solution = new();
-    private static readonly string PUZZLE_INPUT = @"L68
-L30
-R48
-L5
-R60
-L55
-L1
-L99
-R14
-L82";
+    private readonly Day03 _solution = new();
+    private static readonly string PUZZLE_INPUT = @"";
 
-    private static readonly string LEVEL_1_SOLUTION = "3";
-    private static readonly string LEVEL_2_SOLUTION = "6";
+    private static readonly string LEVEL_1_SOLUTION = "0";
+    private static readonly string LEVEL_2_SOLUTION = "0";
     
     [Fact]
     public void TestLevel1_WithSampleInput()
@@ -32,11 +23,5 @@ L82";
     {
         var result = _solution.SolveLevel2(PUZZLE_INPUT);
         Assert.Equal(LEVEL_2_SOLUTION, result);
-    }
-
-    [Fact]
-    public void TestLevel1_WithInvalidInput()
-    {
-        Assert.Throws<InvalidOperationException>(() => _solution.SolveLevel1("X4F"));
     }
 }
