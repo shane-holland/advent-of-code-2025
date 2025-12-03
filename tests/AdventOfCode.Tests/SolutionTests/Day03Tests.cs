@@ -6,10 +6,13 @@ namespace AdventOfCode.Tests.SolutionTests;
 public class Day03Tests
 {
     private readonly Day03 _solution = new();
-    private static readonly string PUZZLE_INPUT = @"";
+    private static readonly string PUZZLE_INPUT = @"987654321111111
+811111111111119
+234234234234278
+818181911112111";
 
-    private static readonly string LEVEL_1_SOLUTION = "0";
-    private static readonly string LEVEL_2_SOLUTION = "0";
+    private static readonly string LEVEL_1_SOLUTION = "357";
+    private static readonly string LEVEL_2_SOLUTION = "3121910778619";
     
     [Fact]
     public void TestLevel1_WithSampleInput()
